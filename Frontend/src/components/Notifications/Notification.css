@@ -1,0 +1,25 @@
+#np{
+    text-align: center;
+    font-size: 2em;
+    /* text-decoration: underline; */
+}
+.buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.mymsg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80vw;
+    margin: auto;  
+    padding-top: 10px;
+}
+.mycd{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    flex-wrap: wrap;
+}

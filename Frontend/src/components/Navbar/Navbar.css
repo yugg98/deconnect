@@ -1,0 +1,75 @@
+*{
+    margin:0;
+    padding:0;
+    border:none;
+}
+.imgn img{
+    width: 40px;
+    border-radius: 50%;
+}
+.logon img{
+    width: 70px;
+    border-radius: 50%;
+    padding: 10px;
+}
+.imgn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction:column ;
+}
+nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+   padding: 1px 23px;
+   box-shadow: 2px 8px 12px #f4f4f4;
+}
+.nav_searchBar {
+    padding: 6px;
+    border: 2px solid #f2f2f2;
+    border-radius: 21px;
+    outline: none;
+}
+.nav_searchBar input{
+    outline: none;
+}
+.main_n {
+    display: flex;
+}
+.main_n div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2px 16px;
+}
+.sl{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.MuiSvgIcon-root{
+    width: 60px;
+}
+.border-bottomn{
+    border-bottom: 2px solid green;
+}
+.ham{
+    display:none;
+}
+@media screen and (max-width:550px) {
+    .main_n{
+        display:none;
+    }
+    .nav_.nav_searchBar{
+        width:80%;
+    }
+    .me{
+        display: none;
+    }
+    .ham{
+        display: inline-block;
+    }
+}

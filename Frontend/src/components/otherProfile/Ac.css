@@ -1,0 +1,43 @@
+.imgPr{
+    width: 20px;
+}
+.Main{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.Main p{
+    margin: 0%;
+    font-weight: bold;
+    font-size: 20px;
+}
+.f_2{
+    margin-top: 10px;
+}
+.MuiAccordionSummary-content ,.css-1betqn-MuiAccordionSummary-content {
+    display: grid;
+}
+
+.skills{
+    width: 76vw;
+    margin: 10px auto;
+}
+.imge{
+    width: 17px;
+    margin-left: 29vw;
+    display: block;
+}
+.eimge{
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    left: 94vw;
+}
+@media screen and (width:360px) {
+    .eimge{
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    left: 84vw;
+    }
+}

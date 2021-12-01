@@ -1,0 +1,27 @@
+.imgPr{
+    width: 20px;
+}
+.Main{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.Main p{
+    margin: 0%;
+    font-weight: bold;
+    font-size: 20px;
+}
+.f_2{
+    margin-top: 10px;
+}
+.MuiAccordionSummary-content ,.css-1betqn-MuiAccordionSummary-content {
+    display: grid;
+}
+
+.skills{
+    width: 76vw;
+    margin: 10px auto;
+}
+.himg{
+    width:18px;
+}

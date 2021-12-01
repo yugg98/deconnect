@@ -1,0 +1,44 @@
+.m-s{
+    width: 60vw;
+    margin: 10px;
+    border: 1px solid #E0DFDC;
+    border-radius: 10px;
+    padding: 10px;
+}
+p{
+    font-size: 20px;
+}
+.head_s{
+    margin: 10px;
+    font-size: 1.2rem;
+}
+
+.ms_img{
+    width: 50px;
+    border-radius: 50%;
+}
+.sb{
+    display: flex;
+    margin: 1px 14px;
+}
+.text_sname p{
+    margin: 0%;
+    margin-left: 10px;
+}
+.button_link {
+    margin: auto;
+    margin-bottom: 40px;
+}
+.button_link button{
+    padding: 6px 9px;
+    background: white;
+    border: 1px solid green;
+    border-radius: 4px;
+    margin: 2px;
+}
+@media screen and (max-width:600px){
+    .m-s{
+        border: 2px solid #E0DFDC;
+        width: 100vw;
+    }
+}

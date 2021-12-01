@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "img",
+			"path": "..\\..\\yig\\src\\components\\img"
+		},
+		{
+			"name": "src",
+			"path": "."
+		}
+	],
+	"settings": {}
+}

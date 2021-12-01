@@ -1,0 +1,51 @@
+.container{
+    /* border: 2px solid black; */
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.info{
+    display: inline-flex;
+    align-items: center;
+
+}
+p{
+    text-align: initial;
+}
+.info button{
+    padding: 6px 9px;
+    background: white;
+    border: 1px solid green;
+    border-radius: 4px;
+    margin: 2px;
+    /* position: relative; */
+    left: 10px;
+}
+.pd-right button:hover{
+    color: white;
+    background: green;
+}
+.info img{
+    width: 60px;
+    border-radius: 50%;
+}
+.info p:nth-child(2){
+    font-size: 12px;
+}
+.text{
+    margin: 0 5px;
+}
+.secondary{
+    display: flex;
+    align-items: center;
+}
+.caption{
+    width: 60vh;
+}
+.p_l{
+    width: 50px;
+}
+.comment p{
+    width:10px;
+}
