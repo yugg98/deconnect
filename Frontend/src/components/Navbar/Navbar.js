@@ -39,28 +39,28 @@ function Navbar() {
                     <div className="logon"><img src={logo} /></div>
                     <div className="nav_searchBar" placeholder="" >
                         <input type="text" placeholder="Search" onChange={(e) => setSearch(e.target.value)} />
-                        <SearchIcon onClick={() => { Searchr() }} style={{color:"black"}}/>
+                        <SearchIcon onClick={() => { Searchr() }} style={{ color: "black" }} />
                     </div>
                 </div>
                 <div className="main_n">
-                    <div className="border-bottomn">
-                        <Link to="/"><HomeIcon fontSize="large" /></Link>
+                    <div>
+                        <Link to="/" activeStyle={{ color: 'red' }}><HomeIcon fontSize="large" color="action" /></Link>
                     </div>
                     <div>
-                        <Link to="/notification"><NotificationsIcon fontSize="large" /></Link>
+                        <Link to="/notification" activeStyle={{border:"2px solid green"}}><NotificationsIcon fontSize="large" color="action" /></Link>
                     </div>
                     <div>
-                        <Link to="/PeopleyouMayno"><CableIcon fontSize="large" /></Link>
+                        <Link to="/PeopleyouMayno" activeStyle={{border:"2px solid green"}}><CableIcon fontSize="large" color="action" /></Link>
                     </div>
                     <div>
-                        <Link to="/blog"><BookIcon fontSize="large" /></Link>
+                        <Link to="/blog" activeStyle={{border:"2px solid green"}}><BookIcon fontSize="large" color="action" /></Link>
                     </div>
                     <div>
-                        <Link to="/message"><MessageIcon fontSize="large" /></Link>
+                        <Link to="/message" activeStyle={{border:"2px solid green"}}><MessageIcon fontSize="large" color="action" /></Link>
                     </div>
                 </div>
                 <div className="me"><Link to="/me" ><div className="imgn"><img src={user} />Me</div></Link></div>
-                <div className="ham"><div className="imgn"><Button sx={{ borderRadius: "50%", zIndex: "3" }} onClick={(event) => show(event)}><MenuIcon fontSize="large" style={{color:"black"}}/></Button></div></div>
+                <div className="ham"><div className="imgn"><Button sx={{ borderRadius: "50%", zIndex: "3" }} onClick={(event) => show(event)}><MenuIcon fontSize="large" style={{ color: "black" }} /></Button></div></div>
             </nav>
             {sidebarShow ? <Sidebar /> : null}
         </>
