@@ -52,25 +52,25 @@ function MyPost(props) {
                 // console.error('Error:', error);
             });
     }
-    // const Delete = (id) => {
-    //     const data = {
-    //         "id":id,
-    //         "token": localStorage.getItem("token"),
-    //     }
-    //     fetch(url+'api/v1', {
-    //         method: 'POST', // or 'PUT'
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //         body: JSON.stringify(data),
-    //     }).then(response => response.json())
-    //         .then(data => {
-    //             // console.log('Success:', JSON.stringify(data));
-    //         })
-    //         .catch((error) => {
-    //             // console.error('Error:', error);
-    //         });
-    // }
+    const Delete = (id) => {
+        const data = {
+            "id":id,
+            "token": localStorage.getItem("token"),
+        }
+        fetch(url+'api/v1/delete', {
+            method: 'POST', // or 'PUT'
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        }).then(response => response.json())
+            .then(data => {
+                // console.log('Success:', JSON.stringify(data));
+            })
+            .catch((error) => {
+                // console.error('Error:', error);
+            });
+    }
     return (
         <div>
             <div>
@@ -88,7 +88,7 @@ function MyPost(props) {
                                             <div class='text-grey-900 font-base text-xx mr-1 cursor-pointer'>
                                                 {user.name} <br />
                                                 {user.position} 
-                                                {/* <Button color="error" onClick={Delete(e._id)}><DeleteIcon/></Button> */}
+                                                <Button color="error" onClick={Delete(e._id)}><DeleteIcon/></Button>
                                             </div>
                                             <div class='text-gray-400 font-thin text-xs'>
                                             {format(e.createdAt)}
