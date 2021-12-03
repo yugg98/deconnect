@@ -13,7 +13,7 @@ exports.createPost = catchAsyncErrors(async (req, res, next) => {
     const { body, token } = req.body;
     const decodedData = jwt.verify(token, 'uihfewiuhfriuhriuhiuhhfiufefehfei');
     const user = await User.findById(decodedData.id);
-    if (req.body.img != null) {
+    if (req.body.img == null) {
     const myCloud = await cloudinary.v2.uploader.upload(req.body.img, {
         folder: "Post",
         width: 150,
@@ -33,6 +33,7 @@ exports.createPost = catchAsyncErrors(async (req, res, next) => {
         post
     });
     }
+    else{
     const post = await Post.create({
         user_id: decodedData.id,
         body,
@@ -42,6 +43,7 @@ exports.createPost = catchAsyncErrors(async (req, res, next) => {
         user,
         post
     });
+}
 });
 exports.deletePost = catchAsyncErrors(async (req, res, next) => {
     const id = req.body.id;
