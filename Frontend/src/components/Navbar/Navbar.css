@@ -31,9 +31,12 @@ nav{
     border: 2px solid #f2f2f2;
     border-radius: 21px;
     outline: none;
+    display: flex;
 }
 .nav_searchBar input{
     outline: none;
+    background: #f7f7f7;
+    width: 80%;
 }
 .main_n {
     display: flex;
@@ -59,7 +62,7 @@ nav{
 .ham{
     display:none;
 }
-@media screen and (max-width:550px) {
+@media screen and (max-width:700px) {
     .main_n{
         display:none;
     }
@@ -71,5 +74,7 @@ nav{
     }
     .ham{
         display: inline-block;
+        margin:"10px";
     }
+
 }

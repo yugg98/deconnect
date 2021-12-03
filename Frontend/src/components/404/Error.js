@@ -1,6 +1,11 @@
 import React from 'react'
 import './404.css'
+import {useNavigate} from 'react-router-dom'
 function Error() {
+    const n = useNavigate();
+    // setInterval(()=>{
+    //     n('/')
+    // },10000)
     return (
         <div>
             <section class="wrapper">
@@ -37,7 +42,7 @@ function Error() {
                     <div class="text">
                         <article>
                             <p>Uh oh! Looks like you got lost. <br />Go back to the homepage if you dare!</p>
-                            <button>i dare!</button>
+                            <button onClick={()=>n('/')}>Got Home</button>
                         </article>
                     </div>
 

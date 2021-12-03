@@ -65,8 +65,8 @@ function OtherProfile() {
                 <div className="profileRight">
                     <div className="profileRightTop">
                         <div className="profileCover">
-                            <img className="profileCoverImg" src={user.banner?.url} alt="" />
-                            <img className="profileUserImg" src={user.avatar.url} alt="" />
+                            <img className="profileCoverImg" src={user?.banner?.url} alt="" />
+                            <img className="profileUserImg" src={user?.avatar?.url} alt="" />
 
                         </div>
                         <div className="buttons">
@@ -82,7 +82,7 @@ function OtherProfile() {
                 </div>
             </div>
             <Accordian data={user} />
-            <MyPost id={id} avatar={user.avatar.url}/>
+            <MyPost id={id} avatar={user?.avatar?.url}/>
         </>
     )
 }

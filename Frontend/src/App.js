@@ -13,6 +13,7 @@ import { useSelector, useDispatch } from "react-redux"
 import Blog from './components/Blog/Blog'
 import Signup from './components/Login/Signup'
 import Search from './components/Search/Search'
+import TechShorts from './components/TechShorts/TechShorts'
 import {url} from './components/config'
 function App() {
   const [suc, setsuc] = React.useState(false)
@@ -57,8 +58,8 @@ function App() {
           <Route exact path="/Search/:Search" element={<Search />} />
           <Route exact path="/me" element={<Profile />} />
           <Route exact path="/in/:id" element={<OtherProfile />} />
-          <Route exact path="PeopleyouMayno" element={<People />} />
-          <Route exact path="blog" element={<Blog />} />
+          <Route exact path="peopleyoumayno" element={<People />} />
+          <Route exact path="Techshort" element={<TechShorts />} />
           <Route path="*" element={<Error />} />
         </Routes>
         :

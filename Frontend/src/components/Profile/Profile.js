@@ -17,6 +17,7 @@ import IconButton from '@material-ui/core/IconButton';
 import {url} from '../config'
 function Profile() {
     const [data, setData] = useState([]);
+    const [change, setChange] = useState(false);
     const [pdata, setpData] = useState([]);
     const [open, setOpen] = React.useState(false);
     const [selectedFile, setSelectedFile] = useState();
@@ -60,6 +61,7 @@ function Profile() {
         reader.onerror = () => {
             console.error('AHHHHHHHH!!');
         };
+        setChange(true)
     };
     const avatar = (img) =>{
         const sdata = {
@@ -122,7 +124,9 @@ function Profile() {
     useEffect(() => {
         fetchProfileDetails()
     }, [])
-
+    if(change){
+        fetchProfileDetails()
+    }
     return (
         <>
             <Navbar />

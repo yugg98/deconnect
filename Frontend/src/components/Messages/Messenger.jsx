@@ -8,7 +8,7 @@ import SendIcon from '@mui/icons-material/Send';
 import { connectAdvanced, useSelector } from "react-redux";
 import "./messenger.css";
 import Navbar from "../Navbar/Navbar";
-import {format} from 'timeago.js'
+import { format } from 'timeago.js'
 import { url } from "../config";
 export default function Messenger() {
   const [conversations, setConversations] = useState([]);
@@ -50,7 +50,7 @@ export default function Messenger() {
     const getConversations = async () => {
       console.log(user)
       try {
-        const res = await axios.get(url+`api/v1/conversationsUser/${user._id}`);
+        const res = await axios.get(url + `api/v1/conversationsUser/${user._id}`);
         setConversations(res.data.conversation)
       } catch (err) {
         console.log(err);
@@ -62,7 +62,7 @@ export default function Messenger() {
   useEffect(() => {
     const getMessages = async () => {
       try {
-        const res = await axios.get(url+"api/v1/messages/" + currentChat?._id);
+        const res = await axios.get(url + "api/v1/messages/" + currentChat?._id);
         setMessages(res.data);
       } catch (err) {
         console.log(err);
@@ -90,7 +90,7 @@ export default function Messenger() {
     });
 
     try {
-      const res = await axios.post(url+"api/v1/addmsg", message);
+      const res = await axios.post(url + "api/v1/addmsg", message);
       setMessages([...messages, res.data]);
       setNewMessage("");
     } catch (err) {
@@ -116,28 +116,33 @@ export default function Messenger() {
             </div>
           ))}
         </div>
-        <div class="chat">
-          <div class="contact bar">
-            <div class="pic stark">
-            </div>
-            <div class="name">Tony Stark</div>
-            <div class="seen">Today at 12:56</div>
-          </div>
-          <div class="messages" id="chat">
-          {messages.map((m) => (
-               <div class={user._id == m.sender ? "message stark" : "message parker"} >{m.text}</div>           
-            ))}
+        {currentChat == null ? null :
+          <div class="chat">
+            {/* <div class="contact bar">
+              <div class="pic stark">
               </div>
-          <div class="input">
-            <i class="fas fa-camera">
-            </i><i class="far fa-laugh-beam">
-            </i><input placeholder="Type your message here!" type="text" onChange={(e) => setNewMessage(e.target.value)}
-                    value={newMessage} />
-            <button onClick={handleSubmit}><SendIcon/></button>
-            <i class="fas fa-microphone">
-            </i></div>
-        </div>
+              <div class="name">Tony Stark</div>
+              <div class="seen">Today at 12:56</div>
+            </div> */}
+            <div class="messages" id="chat">
+              {messages.map((m) => (
+                <div class={user._id == m.sender ? "message stark" : "message parker"} >{m.text}
+                {console.log(m)}
+                </div>
+              ))}
+            </div>
+            <div class="input">
+              <i class="fas fa-camera">
+              </i><i class="far fa-laugh-beam">
+              </i><input placeholder="Type your message here!" type="text" onChange={(e) => setNewMessage(e.target.value)}
+                value={newMessage} />
+              <button onClick={handleSubmit}><SendIcon /></button>
+              <i class="fas fa-microphone">
+              </i></div>
+          </div>
+        }
       </div>
+
     </>
   );
 }

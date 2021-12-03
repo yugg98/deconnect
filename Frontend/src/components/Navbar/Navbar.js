@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import './Navbar.css'
 import logo from '../img/img.png'
 import SearchIcon from '@mui/icons-material/Search';
 import NotificationsIcon from '@mui/icons-material/Notifications';
@@ -14,6 +13,7 @@ import { Button } from '@mui/material';
 import Sidebar from '../Sidebar/Sidebar'
 import BookIcon from '@mui/icons-material/Book';
 import MessageIcon from '@mui/icons-material/Message';
+import './Navbar.css'
 
 function Navbar() {
     const [Search, setSearch] = useState(" ");
@@ -39,7 +39,7 @@ function Navbar() {
                     <div className="logon"><img src={logo} /></div>
                     <div className="nav_searchBar" placeholder="" >
                         <input type="text" placeholder="Search" onChange={(e) => setSearch(e.target.value)} />
-                        <SearchIcon onClick={() => { Searchr() }} />
+                        <SearchIcon onClick={() => { Searchr() }} style={{color:"black"}}/>
                     </div>
                 </div>
                 <div className="main_n">
@@ -60,7 +60,7 @@ function Navbar() {
                     </div>
                 </div>
                 <div className="me"><Link to="/me" ><div className="imgn"><img src={user} />Me</div></Link></div>
-                <div className="ham"><div className="imgn"><Button sx={{ borderRadius: "50%", zIndex: "3" }} onClick={(event) => show(event)}><MenuIcon fontSize="large" /></Button></div></div>
+                <div className="ham"><div className="imgn"><Button sx={{ borderRadius: "50%", zIndex: "3" }} onClick={(event) => show(event)}><MenuIcon fontSize="large" style={{color:"black"}}/></Button></div></div>
             </nav>
             {sidebarShow ? <Sidebar /> : null}
         </>

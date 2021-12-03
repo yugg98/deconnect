@@ -21,3 +21,12 @@
     font-size:20px;
 
 }
+ul{
+    padding:0;
+}
+@media screen and (max-width:700px) {
+.MuiSvgIcon-root{
+    color:white;
+    margin: 0px 10px;
+}
+}
