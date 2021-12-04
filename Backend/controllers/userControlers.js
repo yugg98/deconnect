@@ -11,7 +11,7 @@ const Searchuser = require('../utils/SearchUser');
 const decodeToken = require('../utils/decodetoken');
 const post = require('../models/postModel')
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
-  const { name, email, password,position } = req.body;
+  const { name, email, password, position } = req.body;
   const user = await User.create({
     name,
     email,
@@ -172,8 +172,12 @@ exports.updateBanner = catchAsyncErrors(async (req, res, next) => {
   const user = await decodeToken(req.body.token);
   if (req.body.banner !== "") {
     console.log(req.body.banner)
+    try {
+      await cloudinary.v2.uploader.destroy(req.body.imageId);
+    }
+    catch {
 
-    const imageId = user.banner.public_id;
+    }
 
     await cloudinary.v2.uploader.destroy(imageId);
 
@@ -203,8 +207,12 @@ exports.updateAvatar = catchAsyncErrors(async (req, res, next) => {
   const user = await decodeToken(req.body.token);
   if (req.body.avatar != "") {
 
-    await cloudinary.v2.uploader.destroy(imageId);
+    try {
+      await cloudinary.v2.uploader.destroy(req.body.imageId);
+    }
+    catch {
 
+    }
     const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
       folder: "avatar",
       width: 150,
@@ -433,7 +441,7 @@ exports.profile = catchAsyncErrors(async (req, res, next) => {
 })
 exports.postsg = catchAsyncErrors(async (req, res, next) => {
   console.log(req.body.id)
-  const posts = await post.find({user_id:req.body.id})
+  const posts = await post.find({ user_id: req.body.id })
   console.log(posts)
   res.status(200).json({
     posts

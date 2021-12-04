@@ -9,14 +9,18 @@ import ImageIcon from '@mui/icons-material/Image';
 import DescriptionIcon from '@mui/icons-material/Description';
 import IconButton from '@material-ui/core/IconButton';
 import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
-import {url} from '../config'
+import { url } from '../config'
 import './TweetBox.css'
 const TweetBox = () => {
   const [open, setOpen] = React.useState(false);
   const [caption, setCaption] = useState(" ");
   const [fileInputState, setFileInputState] = useState('');
+  const [video, setVideo] = useState('');
   const [previewSource, setPreviewSource] = useState('');
   const [selectedFile, setSelectedFile] = useState();
+
+  const user = useSelector((state) => state.user.state.data.user)
+
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
@@ -24,7 +28,6 @@ const TweetBox = () => {
     const file = e.target.files[0];
     setSelectedFile(file);
   };
-  const user = useSelector((state) => state.user.state.data.user)
 
   const handleSubmitFile = (e) => {
     e.preventDefault();
@@ -60,7 +63,7 @@ const TweetBox = () => {
       }
     }
     console.log(data)
-    fetch(url+'api/v1/create', {
+    fetch(url + 'api/v1/create', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -77,7 +80,7 @@ const TweetBox = () => {
     // console.log(res)
     handleClose();
   }
- 
+  console.log(video)
   return (
     <div className="create">
       <Modal
@@ -102,9 +105,9 @@ const TweetBox = () => {
               <div className="flex justify-between items-center">
                 <div className="button_po">
                   <input accept="video/*" id="icon-button-video"
-                    type="file" style={{ display: 'none' }} />
+                    type="file" style={{ display: 'none' }}  value={video} onChange={(e)=>setVideo(e.target.value)}/>
                   <label htmlFor="icon-button-video">
-                    <IconButton  aria-label="upload picture"
+                    <IconButton aria-label="upload picture"
                       component="span">
                       < VideoLibraryIcon />
                     </IconButton>
@@ -130,8 +133,8 @@ const TweetBox = () => {
                 <div>
                 </div>
               </div>
-              
-                  <button className="p_b" onClick={handleSubmitFile}>Post</button>
+
+              <button className="p_b" onClick={handleSubmitFile}>Post</button>
             </Typography>
           </Box>
         </Fade>
@@ -143,7 +146,7 @@ const TweetBox = () => {
           </span>
         </div>
         <div className="create__first-input">
-          <button className="mind" onClick={()=>handleOpen()}>Whats in your mind?</button>
+          <button className="mind" onClick={() => handleOpen()}>Whats in your mind?</button>
         </div>
       </div>
       <div className="create__second">

@@ -36,7 +36,7 @@ function Navbar() {
         <>
             <nav>
                 <div className="sl">
-                    <div className="logon"><img src={logo} /></div>
+                <Link to="/"><div className="logon"><img src={logo} /></div></Link>
                     <div className="nav_searchBar" placeholder="" >
                         <input type="text" placeholder="Search" onChange={(e) => setSearch(e.target.value)} />
                         <SearchIcon onClick={() => { Searchr() }} style={{ color: "black" }} />
