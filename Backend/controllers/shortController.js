@@ -4,10 +4,10 @@ const cloudinary = require("cloudinary");
 
 exports.getShorts = catchAsyncErrors(async (req, res, next) => {
     try {
-        const size = Number(req.query.size);
-        const skip = Number(req.query.page);
-        console.log(size, skip)
-        const data = await short.find({}).limit(size).skip(size * skip);
+        // const size = Number(req.query.size);
+        // const skip = Number(req.query.page);
+        // console.log(size, skip)
+        const data = await short.find({});
         res.status(200).json(data);
     } catch (error) {
         console.log(error);
