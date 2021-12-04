@@ -114,7 +114,6 @@ function Profile() {
             body: JSON.stringify(sdata),
         }).then(response => response.json())
             .then(data => {
-                console.log(data)
                 setpData(data.posts);
             })
             .catch((error) => {
@@ -125,7 +124,8 @@ function Profile() {
         fetchProfileDetails()
     }, [])
     if(change){
-        fetchProfileDetails()
+        fetchProfileDetails();
+        setChange(false)
     }
     return (
         <>

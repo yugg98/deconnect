@@ -25,7 +25,7 @@ ul{
     padding:0;
 }
 @media screen and (max-width:700px) {
-.MuiSvgIcon-root{
+.sideNav .MuiSvgIcon-root{
     color:white;
     margin: 0px 10px;
 }

@@ -18,7 +18,7 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
     password,
     avatar: {
       public_id: '987724764823',
-      url: 'https://res.cloudinary.com/yug/image/upload/v1636900522/avatar/user_oko5bv.png',
+      url: 'https://www.pngplay.com/wp-content/uploads/12/User-Avatar-Profile-PNG-Pic-Clip-Art-Background.png',
     },
     banner: {
       public_id: '02408482034',

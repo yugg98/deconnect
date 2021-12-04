@@ -88,7 +88,7 @@ function MyPost(props) {
                                             <div class='text-grey-900 font-base text-xx mr-1 cursor-pointer'>
                                                 {user.name} <br />
                                                 {user.position} 
-                                                <Button color="error" onClick={Delete(e._id)}><DeleteIcon/></Button>
+                                                <Button color="error" onClick={()=>Delete(e._id)}><DeleteIcon/></Button>
                                             </div>
                                             <div class='text-gray-400 font-thin text-xs'>
                                             {format(e.createdAt)}
