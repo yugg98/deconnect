@@ -53,7 +53,7 @@ function Navbar() {
                         <Link to="/PeopleyouMayno" activeStyle={{border:"2px solid green"}}><CableIcon fontSize="large" color="action" /></Link>
                     </div>
                     <div>
-                        <Link to="/blog" activeStyle={{border:"2px solid green"}}><BookIcon fontSize="large" color="action" /></Link>
+                        <Link to="/Techshort" activeStyle={{border:"2px solid green"}}><BookIcon fontSize="large" color="action" /></Link>
                     </div>
                     <div>
                         <Link to="/message" activeStyle={{border:"2px solid green"}}><MessageIcon fontSize="large" color="action" /></Link>
