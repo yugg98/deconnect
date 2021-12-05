@@ -182,7 +182,6 @@ function Post() {
                                                 <div className="border-b border-gray-100"></div>
                                                 <div className='text-gray-400 font-medium text-sm mb-7 mt-6 mx-3 px-2'>
                                                     {ModalData?.body}
-                                                    {/* <img src={}/> */}
                                                 </div>
                                                 <div className='text-gray-600 font-semibold text-lg mb-2 mx-3 px-2'></div>
                                                 <div className='text-gray-500 font-thin text-sm mb-6 mx-3 px-2'></div>

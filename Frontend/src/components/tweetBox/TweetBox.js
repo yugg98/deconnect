@@ -18,7 +18,7 @@ const TweetBox = () => {
   const [video, setVideo] = useState('');
   const [previewSource, setPreviewSource] = useState('');
   const [selectedFile, setSelectedFile] = useState();
-
+  const [pdf,setPdf] = useState();
   const user = useSelector((state) => state.user.state.data.user)
 
   const handleOpen = () => setOpen(true);
@@ -121,14 +121,14 @@ const TweetBox = () => {
                       < ImageIcon />
                     </IconButton>
                   </label>
-                  <input id="icon-button-file"
-                    type="file" style={{ display: 'none' }} />
+                  {/* <input id="icon-button-file"
+                    type="file" style={{ display: 'none' }} onChange={e=setPdf(e.target.value)}/>
                   <label htmlFor="icon-button-file">
                     <IconButton color="primary" aria-label="upload picture"
                       component="span">
                       < DescriptionIcon />
                     </IconButton>
-                  </label>
+                  </label> */}
                 </div>
                 <div>
                 </div>
@@ -152,15 +152,15 @@ const TweetBox = () => {
       <div className="create__second">
         <span className="create__second-icon">
           <VideoLibraryIcon />
-          <span className="text">Video</span>
+          <span className="text" onClick={() => handleOpen()} style={{cursor:"pointer"}}>Video</span>
         </span>
         <span className="create__second-icon">
           <ImageIcon className="greenColor" />{" "}
-          <span className="text">Photo</span>
+          <span className="text" onClick={() => handleOpen()} style={{cursor:"pointer"}}>Photo</span>
         </span>
         <span className="create__second-icon">
           <ImageIcon className="orangeColor" />{" "}
-          <span className="text">Feeling</span>
+          <span className="text" onClick={() => handleOpen()} style={{cursor:"pointer"}}>Feeling</span>
         </span>
       </div>
     </div>

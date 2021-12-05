@@ -171,7 +171,6 @@ exports.updatePassword = catchAsyncErrors(async (req, res, next) => {
 exports.updateBanner = catchAsyncErrors(async (req, res, next) => {
   const user = await decodeToken(req.body.token);
   if (req.body.banner !== "") {
-    console.log(req.body.banner)
     try {
       await cloudinary.v2.uploader.destroy(req.body.imageId);
     }

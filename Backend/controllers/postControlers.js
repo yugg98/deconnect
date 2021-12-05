@@ -10,9 +10,10 @@ const cloudinary = require('cloudinary');
 
 // const mongoose = require('mongoose')
 exports.createPost = catchAsyncErrors(async (req, res, next) => {
-    const { body, token } = req.body;
+    const { token, body } = req.body;
     const decodedData = jwt.verify(token, 'uihfewiuhfriuhriuhiuhhfiufefehfei');
     const user = await User.findById(decodedData.id);
+   
     let post;
     if (req.body.img) {
         const myCloud = await cloudinary.v2.uploader.upload(req.body.img, {
@@ -20,7 +21,7 @@ exports.createPost = catchAsyncErrors(async (req, res, next) => {
             width: 150,
             crop: "scale",
         });
-         post = await Post.create({
+        post = await Post.create({
             user_id: decodedData.id,
             body,
             image: {
@@ -30,7 +31,7 @@ exports.createPost = catchAsyncErrors(async (req, res, next) => {
         })
     }
     else {
-         post = await Post.create({
+        post = await Post.create({
             user_id: decodedData.id,
             body,
         })
