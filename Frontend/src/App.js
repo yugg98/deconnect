@@ -51,7 +51,6 @@ function App() {
   return (
     <div className="App">
       <Routes >
-      <Route exact path="Techshort" element={<TechShorts />} />
 
       </Routes>
       {suc ?
