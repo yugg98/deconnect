@@ -104,7 +104,7 @@ function Signup() {
                 </div>
                 <div class="form-group">
                   <input type="checkbox" name="agree-term" id="agree-term" className="inp" class="agree-term" />
-                  <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
+                  <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="https://www.privacypolicies.com/live/2903b042-f582-475c-adf3-73d39ea5daab" class="term-service">Terms of service</a></label>
                 </div>
                 <div class="form-group form-button">
                   <button id="signup" class="form-submit" onClick={signin}>Register</button>

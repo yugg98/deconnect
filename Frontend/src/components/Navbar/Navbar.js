@@ -36,7 +36,13 @@ function Navbar() {
         <>
             <nav>
                 <div className="sl">
-                <Link to="/"><div className="logon"><img src={logo} /></div></Link>
+                    <Link to="/">
+                        <div className="logon">
+                            <img src={logo} />
+                            
+                        </div>
+                    </Link>
+
                     <div className="nav_searchBar" placeholder="" >
                         <input type="text" placeholder="Search" onChange={(e) => setSearch(e.target.value)} />
                         <SearchIcon onClick={() => { Searchr() }} style={{ color: "black" }} />
@@ -47,16 +53,16 @@ function Navbar() {
                         <Link to="/" activeStyle={{ color: 'red' }}><HomeIcon fontSize="large" color="action" /></Link>
                     </div>
                     <div>
-                        <Link to="/notification" activeStyle={{border:"2px solid green"}}><NotificationsIcon fontSize="large" color="action" /></Link>
+                        <Link to="/notification" activeStyle={{ border: "2px solid green" }}><NotificationsIcon fontSize="large" color="action" /></Link>
                     </div>
                     <div>
-                        <Link to="/PeopleyouMayno" activeStyle={{border:"2px solid green"}}><CableIcon fontSize="large" color="action" /></Link>
+                        <Link to="/PeopleyouMayno" activeStyle={{ border: "2px solid green" }}><CableIcon fontSize="large" color="action" /></Link>
                     </div>
                     <div>
-                        <Link to="/Techshort" activeStyle={{border:"2px solid green"}}><BookIcon fontSize="large" color="action" /></Link>
+                        <Link to="/Techshort" activeStyle={{ border: "2px solid green" }}><BookIcon fontSize="large" color="action" /></Link>
                     </div>
                     <div>
-                        <Link to="/message" activeStyle={{border:"2px solid green"}}><MessageIcon fontSize="large" color="action" /></Link>
+                        <Link to="/message" activeStyle={{ border: "2px solid green" }}><MessageIcon fontSize="large" color="action" /></Link>
                     </div>
                 </div>
                 <div className="me"><Link to="/me" ><div className="imgn"><img src={user} />Me</div></Link></div>
