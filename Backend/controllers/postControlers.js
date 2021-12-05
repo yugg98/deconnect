@@ -13,27 +13,35 @@ exports.createPost = catchAsyncErrors(async (req, res, next) => {
     const { body, token } = req.body;
     const decodedData = jwt.verify(token, 'uihfewiuhfriuhriuhiuhhfiufefehfei');
     const user = await User.findById(decodedData.id);
-    
-    const myCloud = await cloudinary.v2.uploader.upload(req.body.img, {
-        folder: "Post",
-        width: 150,
-        crop: "scale",
-    });
-    const post = await Post.create({
-        user_id: decodedData.id,
-        body,
-        image: {
-            public_id: myCloud.public_id,
-            url: myCloud.secure_url,
-        }
-    })
+    let post;
+    if (req.body.img) {
+        const myCloud = await cloudinary.v2.uploader.upload(req.body.img, {
+            folder: "Post",
+            width: 150,
+            crop: "scale",
+        });
+         post = await Post.create({
+            user_id: decodedData.id,
+            body,
+            image: {
+                public_id: myCloud.public_id,
+                url: myCloud.secure_url,
+            }
+        })
+    }
+    else {
+         post = await Post.create({
+            user_id: decodedData.id,
+            body,
+        })
+    }
     res.status(200).json({
         success: true,
         user,
         post
     });
-    
-   
+
+
 });
 exports.deletePost = catchAsyncErrors(async (req, res, next) => {
     const id = req.body.id;
@@ -77,8 +85,8 @@ exports.Like = (req, res) => {
         })
     }
     const user = User.findById(id)
-    const useri = User.findByIdAndUpdate(id,{
-        $push:{notification:{id:req.body.id,Head:`${user.name} liked your profile`},Message:"",}
+    const useri = User.findByIdAndUpdate(id, {
+        $push: { notification: { id: req.body.id, Head: `${user.name} liked your profile` }, Message: "", }
     });
     Post.findByIdAndUpdate(req.body.id, {
         $addToSet: { likes: id }
@@ -127,10 +135,10 @@ exports.comment = catchAsyncErrors(async (req, res, next) => {
 
     const user = await User.findById(userid);
 
-    const useri = await User.findByIdAndUpdate(postid.user_id,{
-        $push:{Notification:{id:comment._id,Message:`${comment.body}`,Head:`${user.name} commented on your Post`,M:"N"}}
+    const useri = await User.findByIdAndUpdate(postid.user_id, {
+        $push: { Notification: { id: comment._id, Message: `${comment.body}`, Head: `${user.name} commented on your Post`, M: "N" } }
     })
-    
+
     const post = Post.findByIdAndUpdate(pid, {
         $push: { comments: comment._id }
     }, {
@@ -196,8 +204,8 @@ exports.share = catchAsyncErrors(async (req, res, next) => {
     const decodedData = jwt.verify(req.body.token, 'uihfewiuhfriuhriuhiuhhfiufefehfei');
     const user = decodedData.id;
     const id = req.body.pid;
-    const useri = User.findByIdAndUpdate(id,{
-        $push:{notification:{id:id,Head:`${useri.name} Shared your post`},Message:"",}
+    const useri = User.findByIdAndUpdate(id, {
+        $push: { notification: { id: id, Head: `${useri.name} Shared your post` }, Message: "", }
     });
     const post = await Post.findById(id);
     post.shareUser = user;
@@ -222,7 +230,7 @@ exports.delshare = catchAsyncErrors(async (req, res, next) => {
 })
 exports.getComment = catchAsyncErrors(async (req, res, next) => {
     const id = req.params.pid;
-    const Comments = await Comment.find({postid:id}).populate("userId","name avatar _id");
+    const Comments = await Comment.find({ postid: id }).populate("userId", "name avatar _id");
     res.status(200).json({
         Comments
     })
