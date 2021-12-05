@@ -214,7 +214,7 @@ function Post() {
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="ui comments ">
+                                    <div class="ui comments dnone">
                                         <h3 class="ui dividing header">Comments</h3>
 
                                         <div className="scroll">

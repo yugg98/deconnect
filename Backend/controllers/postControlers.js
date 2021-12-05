@@ -85,8 +85,8 @@ exports.Like = (req, res) => {
             "message": "user not found"
         })
     }
-    const user = User.findById(id)
-    const useri = User.findByIdAndUpdate(id, {
+    const user =  User.findById(id)
+    const useri =  User.findByIdAndUpdate(id, {
         $push: { notification: { id: req.body.id, Head: `${user.name} liked your profile` }, Message: "", }
     });
     Post.findByIdAndUpdate(req.body.id, {
@@ -140,7 +140,7 @@ exports.comment = catchAsyncErrors(async (req, res, next) => {
         $push: { Notification: { id: comment._id, Message: `${comment.body}`, Head: `${user.name} commented on your Post`, M: "N" } }
     })
 
-    const post = Post.findByIdAndUpdate(pid, {
+    const post = await Post.findByIdAndUpdate(pid, {
         $push: { comments: comment._id }
     }, {
         new: true
@@ -154,7 +154,7 @@ exports.comment = catchAsyncErrors(async (req, res, next) => {
 });
 exports.delComment = catchAsyncErrors(async (req, res, next) => {
     await Comment.findByIdAndDelete(req.body.id);
-    const post = await Post.findByIdAndUpdate(req.body.pid, {
+    const post = await comment.findByIdAndUpdate(req.body.pid, {
         $pull: { comments: req.body.id }
     }, {
         new: true

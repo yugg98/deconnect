@@ -49,3 +49,8 @@ p{
 .comment p{
     width:10px;
 }
+@media screen and (max-width:700px){
+    .dnone{
+        display: none;
+    }
+}
