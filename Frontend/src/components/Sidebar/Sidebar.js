@@ -16,7 +16,7 @@ function Sidebar() {
                 <li><Link to="/notification"><NotificationsIcon fontSize="large" />Notification</Link></li>
                 {/* <li><Link to="/PeopleyouMayno">PeopleyouMayno</Link></li> */}
                 <li><Link to="/Techshort"><BookIcon fontSize="large" />Blog</Link></li>
-                <li><Link to="/message"><MessageIcon fontSize="large" />Message</Link></li>
+                {/* <li><Link to="/message"><MessageIcon fontSize="large" />Message</Link></li> */}
             </ul>
         </nav>
     )

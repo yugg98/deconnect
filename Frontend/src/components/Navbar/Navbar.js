@@ -61,9 +61,9 @@ function Navbar() {
                     <div>
                         <Link to="/Techshort" activeStyle={{ border: "2px solid green" }}><BookIcon fontSize="large" color="action" /></Link>
                     </div>
-                    <div>
+                    {/* <div>
                         <Link to="/message" activeStyle={{ border: "2px solid green" }}><MessageIcon fontSize="large" color="action" /></Link>
-                    </div>
+                    </div> */}
                 </div>
                 <div className="me"><Link to="/me" ><div className="imgn"><img src={user} />Me</div></Link></div>
                 <div className="ham"><div className="imgn"><Button sx={{ borderRadius: "50%", zIndex: "3" }} onClick={(event) => show(event)}><MenuIcon fontSize="large" style={{ color: "black" }} /></Button></div></div>

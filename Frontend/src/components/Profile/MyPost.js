@@ -3,22 +3,22 @@ import like from '../img/like.png'
 import { useSelector } from "react-redux";
 import './MyPost.css'
 import { format } from 'timeago.js';
-import {Button} from 'semantic-ui-react'
+import { Button } from 'semantic-ui-react'
 import DeleteIcon from '@mui/icons-material/Delete';
-import {url} from '../config'
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import { url } from '../config'
 function MyPost(props) {
     const [comment, setComment] = useState("")
+    const [openDrop, setOpenDrop] = useState(false)
     const user = useSelector((state) => state.user.state.data.user)
-
-   
     const Like = (id) => {
         console.log(id)
         const data = {
-            "id":id,
+            "id": id,
             "token": localStorage.getItem("token")
         }
         // e.preventDefault();
-        fetch(url+'api/v1/Like', {
+        fetch(url + 'api/v1/Like', {
             method: 'PUT', // or 'PUT'
             headers: {
                 'Content-Type': 'application/json',
@@ -34,11 +34,11 @@ function MyPost(props) {
     }
     const PostComment = (id) => {
         const data = {
-            "id":id,
+            "id": id,
             "token": localStorage.getItem("token"),
-            "cbody":comment
+            "cbody": comment
         }
-        fetch(url+'api/v1/Comment', {
+        fetch(url + 'api/v1/Comment', {
             method: 'POST', // or 'PUT'
             headers: {
                 'Content-Type': 'application/json',
@@ -53,11 +53,12 @@ function MyPost(props) {
             });
     }
     const Delete = (id) => {
+        console.log(id)
         const data = {
-            "id":id,
+            "id": id,
             "token": localStorage.getItem("token"),
         }
-        fetch(url+'api/v1/delete', {
+        fetch(url + 'api/v1/delete', {
             method: 'POST', // or 'PUT'
             headers: {
                 'Content-Type': 'application/json',
@@ -70,6 +71,13 @@ function MyPost(props) {
             .catch((error) => {
                 // console.error('Error:', error);
             });
+    }
+    const openDropdown =()=>{
+        if(openDrop){
+            setOpenDrop(false);
+            return
+        }
+        setOpenDrop(true)
     }
     return (
         <div>
@@ -87,12 +95,20 @@ function MyPost(props) {
                                         <div class='flex w-full mt-1'>
                                             <div class='text-grey-900 font-base text-xx mr-1 cursor-pointer'>
                                                 {user.name} <br />
-                                                {user.position} 
-                                                <Button color="error" onClick={()=>Delete(e._id)}><DeleteIcon/></Button>
+                                                {user.position}
                                             </div>
                                             <div class='text-gray-400 font-thin text-xs'>
-                                            {format(e.createdAt)}
-
+                                                {format(e.createdAt)}
+                                            </div>
+                                            <div>
+                                                <button onClick={openDropdown}><MoreVertIcon /></button>
+                                                {openDrop ?
+                                                    <div class="dropdown">
+                                                        <div onClick={()=>Delete(e._id)}>
+                                                        Delete <DeleteIcon/>
+                                                        </div>
+                                                    </div>
+                                                    : null}
                                             </div>
                                         </div>
                                     </div>
@@ -108,10 +124,10 @@ function MyPost(props) {
                                     <div class="flex w-full mt-1 pt-2 pl-5">
                                     </div>
                                     <div class="flex justify-end w-full mt-1 pt-2 pr-5">
-                                       
+
 
                                         <span>
-                                            <button onClick={()=>Like(e._id)}><img src={like} className="like_P"  /></button>
+                                            <button onClick={() => Like(e._id)}><img src={like} className="like_P" /></button>
                                         </span>
 
                                     </div>
@@ -128,15 +144,15 @@ function MyPost(props) {
                                 <div class="relative flex items-center self-center w-full max-w-xl p-4 overflow-hidden text-gray-600 focus-within:text-gray-400">
                                     <img class='w-10 h-10 object-cover rounded-full shadow mr-2 cursor-pointer' alt='User avatar' src={user.avatar?.url} />
                                     <span class="absolute inset-y-0 right-0 flex items-center pr-6">
-                                        <button type="submit" onClick={()=>PostComment(e._id)} class="p-1 focus:outline-none focus:shadow-none hover:text-blue-500">
+                                        <button type="submit" onClick={() => PostComment(e._id)} class="p-1 focus:outline-none focus:shadow-none hover:text-blue-500">
                                             <svg class="w-6 h-6 transition ease-out duration-300 hover:text-blue-500 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                             </svg>
 
                                         </button>
                                     </span>
-                                    <input type="search" style={{width:"375px",color:"white"}}onChange={(e)=>setComment(e.target.value)}class="w-full py-2 pl-4 pr-10 text-sm bg-gray-100 border border-transparent appearance-none rounded-tg placeholder-gray-400 focus:bg-white focus:outline-none focus:border-blue-500 focus:text-gray-900 focus:shadow-outline-blue" style={{ borderRadius: "25px" }} placeholder="Post a comment..." autoComplete="off" />
-                                    
+                                    <input type="search" style={{ width: "375px", color: "white" }} onChange={(e) => setComment(e.target.value)} class="w-full py-2 pl-4 pr-10 text-sm bg-gray-100 border border-transparent appearance-none rounded-tg placeholder-gray-400 focus:bg-white focus:outline-none focus:border-blue-500 focus:text-gray-900 focus:shadow-outline-blue" style={{ borderRadius: "25px" }} placeholder="Post a comment..." autoComplete="off" />
+
                                 </div>
                             </div>
                         </div>

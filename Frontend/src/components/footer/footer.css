@@ -1,0 +1,137 @@
+
+footer{
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 50px 100px;
+    display: flex;
+    flex-wrap: wrap;
+}
+footer .containerf{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+footer .containerf .sec{
+    margin-right: 30px;
+}
+footer .containerf .sec.aboutus{
+    width: 40%; 
+}
+footer .containerf  h2 {
+    position: relative;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+footer p{
+    font-size:none ;
+}
+footer .containerf  h2:before{
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: #f00;
+}
+footer .containerf  p {
+    color: #999;
+}
+.sci{
+    margin-top: 20px;
+    display: flex;
+}
+.sci li{
+    list-style: none; 
+}
+.sci li a{
+    display: inline;
+    width: 40px;
+    height: 40px;
+    background: #222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    text-decoration: none;
+    border-radius: 4px;
+}
+.sci li a:hover{
+    background: #f00;
+}
+.contactf.MuiSvgIcon-root {
+    color: rgb(0, 0, 0);
+}
+.aboutus .MuiSvgIcon-root {
+    color: rgb(255, 255, 255);
+}
+.quicklinks{
+    position: relative;
+    width: 25%;
+}
+.quicklinks ul li a{
+    color: #999;
+    text-decoration: none;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+.quicklinks ul li a:hover{
+    color: #fff;
+}
+.contactf{
+    width: calc(35% - 60px);
+    margin-right: 0 !important;
+}
+.contact f.infof{
+    position: relative;
+}
+.contactf .infof li{
+    display: flex;
+    margin-bottom: 16px;
+}
+.contactf .infof li span:nth-child(1){
+    /* color: #fff; */
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.contactf .infof li span{
+    color: #999;
+}
+.contactf .infof li  a{
+    color: #999;
+    text-decoration: none;
+}
+.contactf .infof li  a :hover{
+    color: #fff;
+}
+.copyrightText{
+    width: 100%;
+    /* background: #181818; */
+    padding: 8px 100px;
+    color: #999;
+}
+.copyrightText p{
+    text-align: center;
+}
+@media  (max-width:991px) {
+    footer{
+        padding: 40px;
+    }
+    footer .containerf{
+        flex-direction: column;
+    }
+    footer .containerf .sec{
+        margin-right: 0;
+        margin-bottom: 40px;
+    }
+    footer .containerf .sec.aboutus,.quicklinks,.contactf{
+        width: 100%;
+    }
+    .copyrightText{
+        padding: 8px 40px;
+    }
+
+}

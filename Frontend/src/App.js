@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Footer from './components/footer/Footer';
 import Login from './components/Login/Login'
 import { Routes, Route } from "react-router-dom";
 import Error from './components/404/Error'
@@ -14,7 +15,7 @@ import Blog from './components/Blog/Blog'
 import Signup from './components/Login/Signup'
 import Search from './components/Search/Search'
 import TechShorts from './components/TechShorts/TechShorts'
-import {url} from './components/config'
+import { url } from './components/config'
 function App() {
   const [suc, setsuc] = React.useState(false)
 
@@ -26,7 +27,7 @@ function App() {
       const data = {
         "token": token
       }
-      fetch(url+'api/v1/checkToken', {
+      fetch(url + 'api/v1/checkToken', {
         method: 'POST', // or 'PUT'
         headers: {
           'Content-Type': 'application/json',
@@ -44,9 +45,9 @@ function App() {
         });
     }
   }
-  useEffect(()=>{
+  useEffect(() => {
     check()
-  },[])
+  }, [])
 
   return (
     <div className="App">
@@ -54,17 +55,20 @@ function App() {
 
       </Routes>
       {suc ?
-        <Routes>
-          <Route exact path="/" element={<Main />} />
-          <Route exact path="/message" element={<Message />} />
-          <Route exact path="/notification" element={<Notification />} />
-          <Route exact path="/Search/:Search" element={<Search />} />
-          <Route exact path="/me" element={<Profile />} />
-          <Route exact path="/in/:id" element={<OtherProfile />} />
-          <Route exact path="peopleyoumayno" element={<People />} />
-          <Route exact path="Techshort" element={<TechShorts />} />
-          <Route path="*" element={<Error />} />
-        </Routes>
+
+        <>
+          <Routes>
+            <Route exact path="/" element={<Main />} />
+            <Route exact path="/notification" element={<Notification />} />
+            <Route exact path="/Search/:Search" element={<Search />} />
+            <Route exact path="/me" element={<Profile />} />
+            <Route exact path="/in/:id" element={<OtherProfile />} />
+            <Route exact path="peopleyoumayno" element={<People />} />
+            <Route exact path="Techshort" element={<TechShorts />} />
+            <Route path="*" element={<Error />} />
+          </Routes>
+          <Footer />
+        </>
         :
         <Routes>
           <Route path="Signup" element={<Signup />} />
@@ -72,7 +76,8 @@ function App() {
           <Route path="*" element={<Error />} />
         </Routes>
       }
-    </div>
+
+    </div >
   );
 }
 

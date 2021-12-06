@@ -20,6 +20,8 @@ code {
   background-color: #8d7777;
   -webkit-border-radius: 10px;
   border-radius: 10px;
+  position: absolute;
+  z-index: 2;
 }
 
 ::-webkit-scrollbar-thumb {
