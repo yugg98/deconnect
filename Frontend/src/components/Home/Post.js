@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import './Post.css'
-import Speech from './Speech';
 import like from '../img/like.png'
 import Backdrop from '@mui/material/Backdrop';
 import Box from '@mui/material/Box';
@@ -301,7 +300,7 @@ function Post() {
                                         <span>
                                             <button className="p_l" onClick={() => Like(e._id)}><img src={like} className="like_P" /></button>
                                         </span>
-                                      <Speech text={e.body}/>
+                                      {/* <Speech text={e.body}/> */}
                                     </div>
                                 </div>
                                 {/* <div className="flex w-full border-t border-gray-100">
