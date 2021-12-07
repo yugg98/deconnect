@@ -44,17 +44,6 @@ const userSchema = new mongoose.Schema({
     type: String,
     default: "NotPremium",
   },
-
-  avatar: {
-    public_id: {
-      type: String,
-      // required: true,
-    },
-    url: {
-      type: String,
-      // required: true,
-    },
-  },
   banner: {
     public_id: {
       type: String,

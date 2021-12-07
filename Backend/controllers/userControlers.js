@@ -172,7 +172,7 @@ exports.updateBanner = catchAsyncErrors(async (req, res, next) => {
   const user = await decodeToken(req.body.token);
   if (req.body.banner !== "") {
     try {
-      await cloudinary.v2.uploader.destroy(req.body.imageId);
+      await cloudinary.v2.uploader.destroy(user.banner.public_id);
     }
     catch {
 
@@ -207,7 +207,7 @@ exports.updateAvatar = catchAsyncErrors(async (req, res, next) => {
   if (req.body.avatar != "") {
 
     try {
-      await cloudinary.v2.uploader.destroy(req.body.imageId);
+      await cloudinary.v2.uploader.destroy(user.avatar.public_id);
     }
     catch {
 
