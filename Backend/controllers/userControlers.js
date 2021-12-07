@@ -172,13 +172,12 @@ exports.updateBanner = catchAsyncErrors(async (req, res, next) => {
   const user = await decodeToken(req.body.token);
   if (req.body.banner !== "") {
     try {
-      await cloudinary.v2.uploader.destroy(user.banner.public_id);
+      await cloudinary.v2.uploader.destroy(req.body.imageId);
     }
     catch {
 
     }
 
-    await cloudinary.v2.uploader.destroy(imageId);
 
     const myCloud = await cloudinary.v2.uploader.upload(req.body.banner, {
       folder: "banners"
