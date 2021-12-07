@@ -45,8 +45,16 @@ exports.createPost = catchAsyncErrors(async (req, res, next) => {
 
 });
 exports.deletePost = catchAsyncErrors(async (req, res, next) => {
+    
     const id = req.body.id;
-    const post = await Post.deleteOne({ _id: id });
+    const post = await Post.findById(id);
+    Post.findByIdAndDelete(id)
+    try{
+        await cloudinary.v2.uploader.destroy(post.image.public_id)
+    }
+    catch{
+        
+    }
     if (post == null) {
         res.status(401).json({
             success: false,

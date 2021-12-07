@@ -1,15 +1,18 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import like from '../img/like.png'
 import { useSelector } from "react-redux";
+import { savePost } from "../../redux/action/index"
 import './MyPost.css'
 import { format } from 'timeago.js';
 import { Button } from 'semantic-ui-react'
 import DeleteIcon from '@mui/icons-material/Delete';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { url } from '../config'
-function MyPost(props) {
+import { useDispatch } from "react-redux";
+function MyPost() {
     const [comment, setComment] = useState("")
     const [openDrop, setOpenDrop] = useState(false)
+    const [data, setData] = useState([])
     const user = useSelector((state) => state.user.state.data.user)
     const Like = (id) => {
         console.log(id)
@@ -32,6 +35,7 @@ function MyPost(props) {
                 // console.error('Error:', error);
             });
     }
+    const dispatch = useDispatch()
     const PostComment = (id) => {
         const data = {
             "id": id,
@@ -52,9 +56,32 @@ function MyPost(props) {
                 // console.error('Error:', error);
             });
     }
+    const fetchMypost = () => {
+        const sdata = {
+            "token": localStorage.getItem("token")
+        }
+        fetch(url + 'api/v1/myPost', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(sdata),
+        }).then(response => response.json())
+            .then(data => {
+                const post = data.posts;
+                setData(post)
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    }
+    useEffect(() => {
+        fetchMypost()
+    }, [])
+
     const Delete = (id) => {
         console.log(id)
-        const data = {
+        const sdata = {
             "id": id,
             "token": localStorage.getItem("token"),
         }
@@ -63,26 +90,31 @@ function MyPost(props) {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(data),
+            body: JSON.stringify(sdata),
         }).then(response => response.json())
-            .then(data => {
-                // console.log('Success:', JSON.stringify(data));
+            .then(no => {
+                data.filter(function(da){
+                    return da._id == id
+                    setOpenDrop({})
+                })                
+
             })
             .catch((error) => {
                 // console.error('Error:', error);
             });
     }
-    const openDropdown =()=>{
-        if(openDrop){
+    const openDropdown = () => {
+        if (openDrop) {
             setOpenDrop(false);
             return
         }
         setOpenDrop(true)
     }
+
     return (
         <div>
             <div>
-                {props.props.post?.map((e, id) => (
+                {data?.map((e, id) => (
                     <div class='flex max-w-xl my-10 bg-white shadow-md rounded-lg overflow-hidden mx-auto' key={e._id}>
                         <div class='flex items-center w-full'>
                             <div class='w-full'>
@@ -104,8 +136,8 @@ function MyPost(props) {
                                                 <button onClick={openDropdown}><MoreVertIcon /></button>
                                                 {openDrop ?
                                                     <div class="dropdown">
-                                                        <div onClick={()=>Delete(e._id)}>
-                                                        Delete <DeleteIcon/>
+                                                        <div onClick={() => Delete(e._id)}>
+                                                            Delete <DeleteIcon />
                                                         </div>
                                                     </div>
                                                     : null}

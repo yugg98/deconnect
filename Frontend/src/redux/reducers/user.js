@@ -8,3 +8,4 @@ export const user = (state = {}, action) => {
         default: return state
     }
 }
+

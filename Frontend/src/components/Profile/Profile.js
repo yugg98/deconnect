@@ -10,16 +10,17 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import Typography from '@mui/material/Typography';
-import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
 import ImageIcon from '@mui/icons-material/Image';
-import DescriptionIcon from '@mui/icons-material/Description';
 import IconButton from '@material-ui/core/IconButton';
+import { useDispatch } from "react-redux";
+import { saveUser,savePost } from "../../redux/action/index"
 import {url} from '../config'
 function Profile() {
     const [data, setData] = useState([]);
+
     const [change, setChange] = useState(false);
-    const [pdata, setpData] = useState([]);
     const [open, setOpen] = React.useState(false);
+
     const [selectedFile, setSelectedFile] = useState();
     const [fileInputState, setFileInputState] = useState('');
     const [img, setImg] = useState('');
@@ -34,6 +35,7 @@ function Profile() {
         setSelectedFile(file);
     };
 
+    const dispatch = useDispatch();
 
 
     const Avatar = () => {
@@ -77,6 +79,7 @@ function Profile() {
         }).then(response => response.json())
             .then(data => {
                 console.log(data)
+                fetchProfileDetails()
             })
             .catch((error) => {
                 console.error('Error:', error);
@@ -97,16 +100,18 @@ function Profile() {
         }).then(response => response.json())
             .then(data => {
                 console.log(data)
+                fetchProfileDetails()
             })
             .catch((error) => {
                 console.error('Error:', error);
             });
     }
-    const fetchProfileDetails = () => {
+    const fetchProfileDetails =()=>{
+        const token = localStorage.getItem("token");
         const sdata = {
-            "token":localStorage.getItem("token")
+            "token":token
         }
-        fetch(url+'api/v1/myPost', {
+        fetch(url+'api/v1/me', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -114,19 +119,16 @@ function Profile() {
             body: JSON.stringify(sdata),
         }).then(response => response.json())
             .then(data => {
-                setpData(data.posts);
+                dispatch(saveUser({ data, token }))
             })
             .catch((error) => {
                 console.error('Error:', error);
             });
     }
+ 
     useEffect(() => {
-        fetchProfileDetails()
     }, [])
-    if(change){
-        fetchProfileDetails();
-        setChange(false)
-    }
+
     return (
         <>
             <Navbar />
@@ -200,7 +202,7 @@ function Profile() {
                 </div>
             </div>
             <Accordian />
-            <MyPost props={{ post: pdata, user: data }} />
+            <MyPost  />
         </>
     )
 }

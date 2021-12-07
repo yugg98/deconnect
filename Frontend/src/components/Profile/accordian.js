@@ -7,11 +7,15 @@ import Fade from '@mui/material/Fade';
 import Typography from '@mui/material/Typography';
 import './Ac.css'
 import edit from '../img/edit.png'
-import { useSelector } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
+import { saveUser } from "../../redux/action/index"
+
 import {url} from '../config'
 import Accordion from 'react-bootstrap/Accordion'
 
 export default function CustomizedAccordions() {
+    const dispatch = useDispatch();
+
     const [open, setOpen] = React.useState(false);
     const [Aopen, setAOpen] = React.useState(false);
     const [Bopen, setBOpen] = React.useState(false);
@@ -42,6 +46,7 @@ export default function CustomizedAccordions() {
         setExpanded(newExpanded ? panel : false);
     };
     const user = useSelector((state) => state.user.state.data.user)
+    const token = localStorage.getItem("token")
     const sendAbout = () => {
         const data = {
             "token": localStorage.getItem("token"),
@@ -56,8 +61,7 @@ export default function CustomizedAccordions() {
         }).then(response => response.json())
             .then(data => {
                 setaboutd(data.user)
-                setChange(true)
-
+                fetchProfileDetails()
             })
             .catch((error) => {
                 // console.error('Error:', error);
@@ -66,7 +70,6 @@ export default function CustomizedAccordions() {
         handleClose()
         // forceUpdate();
     }
-
     const sendExperience = () => {
         const data = {
             "token": localStorage.getItem("token"),
@@ -81,8 +84,7 @@ export default function CustomizedAccordions() {
         }).then(response => response.json())
             .then(data => {
                 setExperience(data.user)
-                setChange(true)
-
+                fetchProfileDetails()
             })
             .catch((error) => {
             })
@@ -101,8 +103,8 @@ export default function CustomizedAccordions() {
             },
             body: JSON.stringify(data),
         }).then(response => response.json())
-            .then(data => {
-                setChange(true)
+            .then(data => {                
+                fetchProfileDetails()
             })
             .catch((error) => {
             })
@@ -123,34 +125,32 @@ export default function CustomizedAccordions() {
         }).then(response => response.json())
             .then(data => {
                 setskills(data.user.skills)
-                setChange(true)
+                fetchProfileDetails()
             })
             .catch((error) => {
             })
 
         handleCClose()
     }
-    const getProfile = () => {
-        const data = {
-            "token": localStorage.getItem("token"),
-            "about": cabout
+    const fetchProfileDetails = () => {
+        
+        const sdata = {
+            "token":token
         }
-        fetch(url+'api/v1/skill', {
-            method: 'POST', // or 'PUT'
+        fetch(url+'api/v1/me', {
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(data),
+            body: JSON.stringify(sdata),
         }).then(response => response.json())
             .then(data => {
-                setskills(data.user.skills)
+                dispatch(saveUser({ data, token }))
             })
             .catch((error) => {
-            })
-
-
+                console.error('Error:', error);
+            });
     }
-    // getProfile();
     return (
         <div>
             <Modal
