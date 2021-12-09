@@ -70,8 +70,8 @@ function App() {
         </>
         :
         <Routes>
-          <Route path="Signup" element={<Signup />} />
-          <Route path="/" element={<Login />} />
+          <Route exact path="Signup" element={<Signup />} />
+          <Route exact path="/" element={<Login />} />
           <Route exact path="Techshort" element={<TechShorts />} />
           <Route path="*" element={<Error />} />
 
