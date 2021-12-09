@@ -62,7 +62,7 @@ function App() {
             <Route exact path="/me" element={<Profile />} />
             <Route exact path="/in/:id" element={<OtherProfile />} />
             <Route exact path="peopleyoumayno" element={<People />} />
-            <Route exact path="Techshort" element={<TechShorts />} />
+            <Route exact path="/Techshort" element={<TechShorts />} />
 
             <Route path="*" element={<Error />} />
           </Routes>
@@ -72,7 +72,7 @@ function App() {
         <Routes>
           <Route exact path="Signup" element={<Signup />} />
           <Route exact path="/" element={<Login />} />
-          <Route exact path="Techshort" element={<TechShorts />} />
+          <Route exact path="/Techshort" element={<TechShorts />} />
           <Route path="*" element={<Error />} />
 
         </Routes>

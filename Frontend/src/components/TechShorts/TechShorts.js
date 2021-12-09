@@ -6,6 +6,7 @@ import Navbar from '../Navbar/Navbar'
 import axios from 'axios'
 import NewsCard from './NewsCard'
 import './TechShorts.css'
+import Lnavbar from '../Loginnavbar/Lnavbar';
 function TechShorts() {
   const [data, setData] = useState([])
   useEffect(() => {
@@ -16,7 +17,7 @@ function TechShorts() {
 
   return (
     <>
-      <Navbar />
+    {localStorage.getItem('token') ? <Navbar /> : <Lnavbar/>}
       <Container maxWidth="md">
         <div className="content">
         
