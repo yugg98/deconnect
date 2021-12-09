@@ -10,7 +10,7 @@ import Main from './components/Home/Home'
 import People from './components/People/People'
 import { saveUser } from "./redux/action/index"
 import Notification from "./components/Notifications/Notification"
-import {  useDispatch } from "react-redux"
+import { useDispatch } from "react-redux"
 import Blog from './components/Blog/Blog'
 import Signup from './components/Login/Signup'
 import Search from './components/Search/Search'
@@ -52,7 +52,7 @@ function App() {
   return (
     <div className="App">
       <Routes >
-
+        <Route exact path="Techshort" element={<TechShorts />} />
       </Routes>
       {suc ?
 
@@ -64,7 +64,6 @@ function App() {
             <Route exact path="/me" element={<Profile />} />
             <Route exact path="/in/:id" element={<OtherProfile />} />
             <Route exact path="peopleyoumayno" element={<People />} />
-            <Route exact path="Techshort" element={<TechShorts />} />
             <Route path="*" element={<Error />} />
           </Routes>
           <Footer />
