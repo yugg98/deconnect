@@ -16,7 +16,7 @@ import Signup from './components/Login/Signup'
 import Search from './components/Search/Search'
 import TechShorts from './components/TechShorts/TechShorts'
 import { url } from './components/config'
-import ImageBay from './components/imageBay/ImageBay';
+// import ImageBay from './components/imageBay/ImageBay';
 function App() {
   const [suc, setsuc] = React.useState(false)
 
@@ -74,7 +74,7 @@ function App() {
           <Route exact path="Signup" element={<Signup />} />
           <Route exact path="/" element={<Login />} />
           <Route exact path="/Techshort" element={<TechShorts />} />
-          <Route exact path="/ImageBay" element={<ImageBay />} />
+          {/* <Route exact path="/ImageBay" element={<ImageBay />} /> */}
           <Route path="*" element={<Error />} />
 
         </Routes>
