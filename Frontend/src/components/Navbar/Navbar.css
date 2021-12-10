@@ -23,8 +23,9 @@ nav{
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-   padding: 1px 23px;
-   box-shadow: 2px 8px 12px #f4f4f4;
+    padding: 1px 23px;
+    box-shadow: 2px 8px 12px #f4f4f4;
+    font-family: 'Poppins', sans-serif;
 }
 .nav_searchBar {
     padding: 6px;
