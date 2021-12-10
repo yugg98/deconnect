@@ -63,7 +63,7 @@ function Navbar() {
                     <div>
                         <Link to="/Techshort" activeStyle={{ border: "2px solid green" }}><BookIcon fontSize="large" color="action" /></Link>
                     </div>
-                    <div>
+                    <div style={{display:"none"}}>
                         <button >
                             <FolderIcon fontSize="large"/>
                             <div className="dropdown">
