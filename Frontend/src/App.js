@@ -64,7 +64,7 @@ function App() {
             <Route exact path="/in/:id" element={<OtherProfile />} />
             <Route exact path="peopleyoumayno" element={<People />} />
             <Route exact path="/Techshort" element={<TechShorts />} />
-            <Route exact path="/img" element={<ImageBay />} />
+            {/* <Route exact path="/img" element={<ImageBay />} /> */}
             <Route path="*" element={<Error />} />
           </Routes>
           <Footer />
